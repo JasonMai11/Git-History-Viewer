@@ -1,0 +1,77 @@
+/* Container holding both the Git graph and the commit details */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping when screen is too small */
+  justify-content: space-between;
+}
+
+/* Git graph specific styles */
+#git-graph {
+  flex: 1 0 40%; /* Allows the git graph to take up 40% of space but not shrink below that */
+  border-right: 2px solid #ccc;
+  padding-right: 20px;
+  min-width: 300px; /* Minimum width for the graph to remain understandable */
+}
+
+/* Commit details section */
+.commit-details {
+  flex: 1 0 55%; /* Allows details to take up 55% of space but not shrink below that */
+  padding: 20px;
+  overflow-y: auto;
+  min-width: 300px; /* Minimum width for details */
+}
+.theme-switcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.theme-switcher button {
+  background: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+
+.theme-switcher button:hover {
+  background: #2980b9;
+}
+:root {
+  /* Light theme */
+  --primary-bg: #ffffff;
+  --primary-text: #333333;
+}
+
+[data-theme='dark'] {
+  /* Dark theme */
+  --primary-bg: #333333;
+  --primary-text: #ffffff;
+}
+
+
+
+@media only screen and (max-width: 768px) { 
+  /* Adjust breakpoint as needed */
+  .container {
+      flex-direction: column; /* Stack children vertically */
+  }
+
+  #git-graph, .commit-details {
+      min-width: 100%; /* Let them take full width */
+      border-right: none; /* Remove border from git graph */
+  }
+}
+
+
